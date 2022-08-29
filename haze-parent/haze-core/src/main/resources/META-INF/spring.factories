@@ -1,0 +1,12 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zxl.haze.core.executor.ExecutorAutoConfiguration,\
+  com.zxl.haze.core.context.ContextAutoConfiguration,\
+  com.zxl.haze.core.trace.TraceAutoConfiguration
+
+
+
+
+
+
+
+

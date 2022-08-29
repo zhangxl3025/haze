@@ -1,0 +1,13 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zxl.haze.web.filter.TraceFilter,\
+    com.zxl.haze.web.exception.GlobalExceptionHandler,\
+  com.zxl.haze.web.feign.OpenFeignAutoConfiguration
+
+
+
+
+
+
+
+
+
