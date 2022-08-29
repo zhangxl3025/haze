@@ -30,13 +30,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BizException.class)
     @ResponseBody
     public Result<String> exceptionHandler(BizException e, HttpServletResponse response) {
-        log.warn("trace：{}", TraceContext.getTraceLog(), e);
+        log.warn("trace：", e);
         return e.result();
     }
     @ExceptionHandler(TaskRejectedException.class)
     @ResponseBody
     public Result<String> exceptionHandler(TaskRejectedException e, HttpServletResponse response) {
-        log.error("trace：{}", TraceContext.getTraceLog(), e);
+        log.error("trace：",  e);
         return Result.fail("线程池拒绝", e.getMessage());
     }
 
@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(SystemException.class)
     @ResponseBody
     public Result<String> exceptionHandler(SystemException e, HttpServletResponse response) {
-        log.error("trace：{}", TraceContext.getTraceLog(), e);
+        log.error("trace：", e);
         return e.result();
     }
 
@@ -61,7 +61,7 @@ public class GlobalExceptionHandler {
                 return exceptionHandler((SystemException) ex, response);
             }
         }
-        log.error("trace：{}", TraceContext.getTraceLog(), e);
+        log.error("trace：",  e);
         return ExceptionEnum.ERROR.result();
     }
 

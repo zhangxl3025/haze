@@ -39,7 +39,6 @@ public class DemoApplication {
 
         log.info("hello invoking");
         TraceContext.closeSpan();
-        TimeUnit.SECONDS.sleep(5);
         return Result.ok("hello");
     }
 
