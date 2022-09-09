@@ -89,8 +89,9 @@ public class DefaultExecutorConfigurer implements Serializable{
     }
 
     public static void showThreadPoolInfo(String desc, ThreadPoolTaskExecutor taskExecutor) {
-        log.info(desc + "corePoolSize [{}], maxPoolSize [{}]", taskExecutor.getCorePoolSize(), taskExecutor.getMaxPoolSize());
-        log.info(desc + "taskCount [{}], completedTaskCount [{}], activeCount [{}], queueSize [{}]",
+        log.info(desc + "corePoolSize [{}], maxPoolSize[{}],taskCount [{}], completedTaskCount [{}], activeCount [{}], queueSize [{}]",
+                taskExecutor.getCorePoolSize(),
+                taskExecutor.getMaxPoolSize(),
                 taskExecutor.getThreadPoolExecutor().getTaskCount(),
                 taskExecutor.getThreadPoolExecutor().getCompletedTaskCount(),
                 taskExecutor.getThreadPoolExecutor().getActiveCount(),
