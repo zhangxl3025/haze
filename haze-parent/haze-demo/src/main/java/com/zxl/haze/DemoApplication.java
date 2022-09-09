@@ -31,17 +31,12 @@ public class DemoApplication {
     public Result<?> hello() throws InterruptedException {
         TraceContext.traceSpan("method hello");
         CompletableFuture.runAsync(() ->{
-            log.info(TraceContext.getTraceJson());
             CompletableFuture.runAsync(() ->{
-                log.info(TraceContext.getTraceJson());
                 CompletableFuture.runAsync(() ->{
-                    log.info(TraceContext.getTraceJson());;
                 },threadPoolTaskExecutor);
             },threadPoolTaskExecutor);
             CompletableFuture.runAsync(() ->{
-                log.info(TraceContext.getTraceJson());
             },threadPoolTaskExecutor);
-            log.info(TraceContext.getTraceJson());
         },threadPoolTaskExecutor);
 
         log.info("hello invoking");

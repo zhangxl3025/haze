@@ -104,7 +104,10 @@ public final class TraceContext {
         if (JSONObject.isValidObject(traceJson)) {
             Trace trace = JSONObject.parseObject(traceJson, Trace.class);
             CONTEXT.set(trace);
+            put2Mdc(trace);
         } else {
+            Trace trace = CONTEXT.get();
+            put2Mdc(trace);
             log.info("traceJson [{}] not valid", traceJson);
         }
     }
