@@ -30,12 +30,19 @@ public class DemoApplication {
     @RequestMapping("hello")
     public Result<?> hello() throws InterruptedException {
         TraceContext.traceSpan("method hello");
-        for (int i = 0; i < 3999; i++) {
-            int finalI = i;
+        CompletableFuture.runAsync(() ->{
+            log.info(TraceContext.getTraceJson());
             CompletableFuture.runAsync(() ->{
-                log.info("async invoking" + finalI);
+                log.info(TraceContext.getTraceJson());
+                CompletableFuture.runAsync(() ->{
+                    log.info(TraceContext.getTraceJson());;
+                },threadPoolTaskExecutor);
             },threadPoolTaskExecutor);
-        }
+            CompletableFuture.runAsync(() ->{
+                log.info(TraceContext.getTraceJson());
+            },threadPoolTaskExecutor);
+            log.info(TraceContext.getTraceJson());
+        },threadPoolTaskExecutor);
 
         log.info("hello invoking");
         TraceContext.closeSpan();

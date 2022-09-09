@@ -10,6 +10,7 @@ public class Trace {
     private String traceId;
     private LinkedList<Span> spanList = new LinkedList<>();
 
+
     protected Span currentSpan() {
         if (!spanList.isEmpty()) {
             return spanList.getLast();
@@ -19,8 +20,7 @@ public class Trace {
 
     protected void addSpan(String spanName) {
         synchronized (TraceContext.getTraceId()) {
-            String spanId = this.currentSpan().getSpanId();
-            Span span = new Span(spanId, spanName);
+            Span span = new Span(currentSpan().getSpanId(), spanName);
             spanList.add(span);
             if (spanList.size() > 10) {
                 spanList.removeLast();
